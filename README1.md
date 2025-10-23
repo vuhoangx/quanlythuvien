@@ -1,3 +1,9 @@
+# Đồ án Quản lý Thư viện
+
+## 1. Sơ đồ Lớp Thực thể (Entities)
+
+Sơ đồ này mô tả cấu trúc dữ liệu cốt lõi và cách chúng liên kết với nhau.
+
 ```mermaid
 classDiagram
     direction LR
@@ -12,7 +18,7 @@ classDiagram
 
     class TaiKhoan {
         -tenDangNhap: String
-        -matKhau: String
+        -matKhoau: String
     }
 
     class Sach {
@@ -47,7 +53,11 @@ classDiagram
     
     PhieuMuon "1" -- "1" NguoiDung : "nguoiDoc"
     PhieuMuon "1" -- "1" NguoiDung : "thuThu"
+```
 
+
+## 2. Sơ đồ Kiến trúc (Tương tác)
+```mermaid
 classDiagram
     direction TB
 
