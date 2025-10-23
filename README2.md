@@ -5,12 +5,13 @@ classDiagram
     direction TB
 
     %% Định nghĩa các lớp trong từng gói (layer)
-    subgraph "3. Controllers (API)"
+    subgraph "1. Entities (Model)"
         direction LR
-        AuthController
-        SachController
-        NguoiDocController
-        MuonTraController
+        NguoiDung
+        TaiKhoan
+        Sach
+        PhieuMuon
+        ChiTietPhieuMuon
     end
 
     subgraph "2. Services (Business Logic)"
@@ -19,6 +20,14 @@ classDiagram
         SachService
         NguoiDocService
         MuonTraService
+    end
+
+    subgraph "3. Controllers (API)"
+        direction LR
+        AuthController
+        SachController
+        NguoiDocController
+        MuonTraController
     end
 
     subgraph "4. Repositories (Data Access)"
@@ -38,15 +47,6 @@ classDiagram
         class ChiTietPhieuMuonRepository {
             <<Interface>>
         }
-    end
-
-    subgraph "1. Entities (Model)"
-        direction LR
-        NguoiDung
-        TaiKhoan
-        Sach
-        PhieuMuon
-        ChiTietPhieuMuon
     end
 
     %% Liên kết phụ thuộc (Dấu ..> nghĩa là "sử dụng")
