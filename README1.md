@@ -57,6 +57,8 @@ classDiagram
 
 
 ## 2. Sơ đồ Kiến trúc (Tương tác)
+## Sơ đồ Kiến trúc
+
 ```mermaid
 classDiagram
     direction TB
@@ -129,4 +131,3 @@ classDiagram
     SachRepository ..> Sach
     PhieuMuonRepository ..> PhieuMuon
     ChiTietPhieuMuonRepository ..> ChiTietPhieuMuon
-```
