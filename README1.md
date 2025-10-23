@@ -1,3 +1,4 @@
+```markdown
 classDiagram
     direction TB
 
@@ -111,3 +112,4 @@ classDiagram
     Services ..> Repositories
     Repositories ..> Entities
     Services ..> Entities
+```
