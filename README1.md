@@ -129,3 +129,4 @@ classDiagram
     SachRepository ..> Sach
     PhieuMuonRepository ..> PhieuMuon
     ChiTietPhieuMuonRepository ..> ChiTietPhieuMuon
+```
