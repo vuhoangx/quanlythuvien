@@ -1,4 +1,4 @@
-```markdown
+```mermaid
 classDiagram
     direction TB
 
