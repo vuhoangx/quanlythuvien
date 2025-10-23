@@ -1,12 +1,8 @@
-## Sơ đồ Kiến trúc Hệ thống Thư viện
-
-```mermaid
 classDiagram
     direction TB
 
     %% 1. Lớp Thực thể (Entities)
     subgraph "Entities (Model)"
-        direction LR
         NguoiDung {
             -id: int
             -hoTen: String
@@ -22,7 +18,10 @@ classDiagram
             -id: int
             -tenSach: String
             -tacGia: String
+            -nhaXuatBan: String
+            -namXuatBan: int
             -soLuongTong: int
+            -soLuongConLai: int
         }
         PhieuMuon {
             -id: int
@@ -44,7 +43,6 @@ classDiagram
 
     %% 2. Lớp Truy cập Dữ liệu (Repositories)
     subgraph "Repositories (Data Access)"
-        direction LR
         class NguoiDungRepository {
             <<Interface>>
         }
@@ -64,7 +62,6 @@ classDiagram
 
     %% 3. Lớp Dịch vụ (Services)
     subgraph "Services (Business Logic)"
-        direction LR
         AuthService {
             +dangNhap(String, String)
         }
@@ -88,7 +85,6 @@ classDiagram
 
     %% 4. Lớp Điều khiển (Controllers)
     subgraph "Controllers (API)"
-        direction LR
         AuthController {
             +handleDangNhap(request)
         }
