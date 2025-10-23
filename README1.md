@@ -1,122 +1,46 @@
-# Đồ án Quản lý Thư viện
-
-## 1. Sơ đồ Lớp Thực thể (Entities)
-
-Sơ đồ này mô tả cấu trúc dữ liệu cốt lõi và cách chúng liên kết với nhau.
-
-```mermaid
-classDiagram
-    direction LR
-
-    class NguoiDung {
-        -id: int
-        -hoTen: String
-        -email: String
-        -soDienThoai: String
-        -vaiTro: Enum
-    }
-
-    class TaiKhoan {
-        -tenDangNhap: String
-        -matKhoau: String
-    }
-
-    class Sach {
-        -id: int
-        -tenSach: String
-        -tacGia: String
-        -theLoai: String
-        -nhaXuatBan: String
-        -namXuatBan: int
-        -soLuongTong: int
-        -soLuongConLai: int
-    }
-
-    class PhieuMuon {
-        -id: int
-        -ngayMuon: Date
-        -ngayHenTra: Date
-        -trangThai: String
-    }
-
-    class ChiTietPhieuMuon {
-        -id: int
-        -ngayTraThucTe: Date
-    }
-
-    %% Mối quan hệ giữa các thực thể
-    NguoiDung "1" -- "1" TaiKhoan : "sở hữu"
-    
-    PhieuMuon "1" *-- "N" ChiTietPhieuMuon : "có"
-    
-    ChiTietPhieuMuon "N" -- "1" Sach : "mượn"
-    
-    PhieuMuon "1" -- "1" NguoiDung : "nguoiDoc"
-    PhieuMuon "1" -- "1" NguoiDung : "thuThu"
-```
-
-
-## 2. Sơ đồ Kiến trúc (Tương tác)
-## Sơ đồ Kiến trúc
-
 ```mermaid
 classDiagram
     direction TB
 
-    %% Định nghĩa các lớp trong từng gói (layer)
-    subgraph "1. Entities (Model)"
-        direction LR
-        NguoiDung
-        TaiKhoan
-        Sach
-        PhieuMuon
-        ChiTietPhieuMuon
-    end
+    %% Entities (Model)
+    class NguoiDung
+    class TaiKhoan
+    class Sach
+    class PhieuMuon
+    class ChiTietPhieuMuon
 
-    subgraph "2. Services (Business Logic)"
-        direction LR
-        AuthService
-        SachService
-        NguoiDocService
-        MuonTraService
-    end
+    %% Services (Business Logic)
+    class AuthService
+    class SachService
+    class NguoiDocService
+    class MuonTraService
 
-    subgraph "3. Controllers (API)"
-        direction LR
-        AuthController
-        SachController
-        NguoiDocController
-        MuonTraController
-    end
+    %% Controllers (API)
+    class AuthController
+    class SachController
+    class NguoiDocController
+    class MuonTraController
 
-    subgraph "4. Repositories (Data Access)"
-        direction LR
-        class NguoiDungRepository {
-            <<Interface>>
-        }
-        class TaiKhoanRepository {
-            <<Interface>>
-        }
-        class SachRepository {
-            <<Interface>>
-        }
-        class PhieuMuonRepository {
-            <<Interface>>
-        }
-        class ChiTietPhieuMuonRepository {
-            <<Interface>>
-        }
-    end
+    %% Repositories (Data Access) - đánh dấu interface
+    class NguoiDungRepository
+    class TaiKhoanRepository
+    class SachRepository
+    class PhieuMuonRepository
+    class ChiTietPhieuMuonRepository
 
-    %% Liên kết phụ thuộc (Dấu ..> nghĩa là "sử dụng")
-    
-    %% Controllers -> Services
+    %% gắn nhãn interface (cú pháp annotation)
+    NguoiDungRepository : <<Interface>>
+    TaiKhoanRepository : <<Interface>>
+    SachRepository : <<Interface>>
+    PhieuMuonRepository : <<Interface>>
+    ChiTietPhieuMuonRepository : <<Interface>>
+
+    %% Quan hệ (dấu ..> là dependency / sử dụng)
     AuthController ..> AuthService
     SachController ..> SachService
     NguoiDocController ..> NguoiDocService
     MuonTraController ..> MuonTraService
 
-    %% Services -> Repositories
     AuthService ..> NguoiDungRepository
     AuthService ..> TaiKhoanRepository
     SachService ..> SachRepository
@@ -125,11 +49,8 @@ classDiagram
     MuonTraService ..> ChiTietPhieuMuonRepository
     MuonTraService ..> SachRepository
 
-    %% Repositories -> Entities
     NguoiDungRepository ..> NguoiDung
     TaiKhoanRepository ..> TaiKhoan
     SachRepository ..> Sach
     PhieuMuonRepository ..> PhieuMuon
     ChiTietPhieuMuonRepository ..> ChiTietPhieuMuon
-
-```
