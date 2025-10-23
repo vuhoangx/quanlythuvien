@@ -1,3 +1,6 @@
+## Sơ đồ Kiến trúc Hệ thống
+
+```mermaid
 classDiagram
     direction TB
 
@@ -67,5 +70,4 @@ classDiagram
     NguoiDungRepository ..> NguoiDung
     TaiKhoanRepository ..> TaiKhoan
     SachRepository ..> Sach
-    PhieuMuonRepository ..> PhieuMuon
-    ChiTietPhieuMuonRepository ..> ChiTietPhieuMuon
+    PhieuMuonRepository ..>
