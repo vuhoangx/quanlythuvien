@@ -51,8 +51,6 @@ classDiagram
     
     PhieuMuon "1" -- "1" NguoiDung : "nguoiDoc"
     PhieuMuon "1" -- "1" NguoiDung : "thuThu"
-2. Sơ đồ Kiến trúc (Tương tác)
-Đoạn mã
 
 classDiagram
     direction TB
