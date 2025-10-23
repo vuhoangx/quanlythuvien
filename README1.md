@@ -1,7 +1,3 @@
-# Đồ án Quản lý Thư viện
-
-## 1. Sơ đồ Lớp Thực thể (Entities)
-
 ```mermaid
 classDiagram
     direction LR
